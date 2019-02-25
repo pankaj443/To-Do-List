@@ -73,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
          }else Toast.makeText(this, "Here are your Todo's", Toast.LENGTH_SHORT).show();
 
 
-         StringBuffer buffer = new StringBuffer();
+
          while (res.moveToNext()){
-                todo p = new todo(res.getString(1),res.getString(2),res.getString(3));
-                Log.i("MSG", String.valueOf(p.datedoes));
+                todo p = new todo(res.getString(1),res.getString(2),res.getString(3),res.getString(0));
+                Log.i("MSG", String.valueOf(p.id));
                 list.add(p);
             // buffer.append("ID :"+ res.getString(0)+"\n");
              //buffer.append("Title :"+ res.getString(1)+"\n");

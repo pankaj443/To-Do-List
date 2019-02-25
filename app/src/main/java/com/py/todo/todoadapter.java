@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ public class todoadapter extends RecyclerView.Adapter<todoadapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
         myViewHolder.titledoes.setText(myDoes.get(i).getTitledoes());
         myViewHolder.descdoes.setText(myDoes.get(i).getDescdoes());
         myViewHolder.datedoes.setText(myDoes.get(i).getDatedoes());
@@ -37,12 +38,15 @@ public class todoadapter extends RecyclerView.Adapter<todoadapter.MyViewHolder> 
         final String getTitleDoes = myDoes.get(i).getTitledoes();
         final String getDescDoes = myDoes.get(i).getDescdoes();
         final String getDateDoes = myDoes.get(i).getDatedoes();
+        final String id = myDoes.get(i).getid();
 
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent aa = new Intent(context, NewTaskAct.class);
+                Log.i("KLJ", String.valueOf(myDoes.get(i).getid()));
+                Intent aa = new Intent(context, Edittask.class);
                 aa.putExtra("titledoes", getTitleDoes);
+                aa.putExtra("id",id);
                 aa.putExtra("descdoes", getDescDoes);
                 aa.putExtra("datedoes", getDateDoes);
 

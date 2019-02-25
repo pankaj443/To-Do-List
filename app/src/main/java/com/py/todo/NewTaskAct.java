@@ -27,7 +27,7 @@ public class NewTaskAct extends AppCompatActivity {
     TextView titlepage, addtitle, adddesc, adddate;
     EditText titledoes, descdoes, datedoes;
     Button btnSaveTask, btnCancel;
-    DatabaseReference reference;
+
     Integer doesNum = new Random().nextInt();
 
     Databasehelper mydb;
@@ -66,6 +66,14 @@ public class NewTaskAct extends AppCompatActivity {
             }
 
 
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent a = new Intent(NewTaskAct.this,MainActivity.class);
+                startActivity(a);
+            }
         });
 
 
