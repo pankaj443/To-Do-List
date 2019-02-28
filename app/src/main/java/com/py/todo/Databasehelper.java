@@ -54,4 +54,23 @@ public class Databasehelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from "+ TABLE_NAME, null);
         return res;
     }
+    public boolean update(String id, String title, String descr , String date ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_0,id);
+        contentValues.put(COL_1,title);
+        contentValues.put(COL_2,descr);
+        contentValues.put(COL_3,date);
+        db.update(TABLE_NAME, contentValues,"ID = ?",new String[]{id});
+
+        return true;
+    }
+
+    public Integer delete(String id ){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        return db.delete(TABLE_NAME, "ID = ?", new String[]{id});
+    }
+
 }
